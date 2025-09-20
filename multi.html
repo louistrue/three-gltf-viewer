@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+        <head>
+                <meta charset="utf-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                <title>Multi glTF Viewer Prototype</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="stylesheet" href="multi.css" />
+                <link
+                        href="https://fonts.googleapis.com/css?family=Raleway:300,400"
+                        rel="stylesheet"
+                />
+                <script defer type="module" src="src/multi-app.js"></script>
+        </head>
+        <body>
+                <header class="site-header">
+                        <h1>Multi glTF Viewer Prototype</h1>
+                        <p>Drop several glTF/GLB models and preview them side by side.</p>
+                </header>
+                <main class="layout">
+                        <section class="dropzone" aria-label="File dropzone">
+                                <div class="dropzone__placeholder">
+                                        <p>Drag one or more glTF 2.0 files or folders here</p>
+                                        <p class="hint">Each model opens in its own viewer panel.</p>
+                                </div>
+                                <div class="upload-btn">
+                                        <input type="file" name="file-input[]" id="file-input" multiple />
+                                        <label for="file-input">
+                                                <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="20"
+                                                        height="17"
+                                                        viewBox="0 0 20 17"
+                                                >
+                                                        <path
+                                                                d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3L10 0zm9.3 11.5l-3.2-2.1h-2l3.4 2.6H14c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2H2.9l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"
+                                                        ></path>
+                                                </svg>
+                                                <span>Choose files</span>
+                                        </label>
+                                </div>
+                        </section>
+                        <section class="viewer-list" aria-live="polite">
+                                <p class="viewer-list__empty">No models loaded yet.</p>
+                        </section>
+                </main>
+                <div class="spinner hidden" role="status" aria-live="assertive">
+                        <span class="sr-only">Loading</span>
+                </div>
+        </body>
+</html>
