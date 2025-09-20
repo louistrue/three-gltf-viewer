@@ -13,6 +13,10 @@ npm install
 npm run dev
 ```
 
+### Multi-model prototype
+
+A lightweight prototype of a multi-model viewer is available at [`multi.html`](./multi.html). Run the dev server and open [`http://localhost:3000/multi.html`](http://localhost:3000/multi.html) to try it. Drag and drop, or use the file picker to select multiple `.gltf`/`.glb` assets (individual files or folders). Each selection is loaded into its own panel so you can inspect several models at once.
+
 ## glTF 2.0 Resources
 
 -   [THREE.GLTFLoader](https://threejs.org/docs/#examples/en/loaders/GLTFLoader)

@@ -1,0 +1,234 @@
+:root {
+        color-scheme: dark;
+        font-family: 'Raleway', sans-serif;
+        background-color: #111;
+        color: #f0f0f0;
+}
+
+* {
+        box-sizing: border-box;
+}
+
+body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: radial-gradient(circle at top, #1d1d1d, #111 60%);
+}
+
+.site-header {
+        padding: 2rem 2rem 1rem;
+        text-align: center;
+}
+
+.site-header h1 {
+        margin: 0 0 0.5rem;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+}
+
+.site-header p {
+        margin: 0;
+        color: #c5c5c5;
+}
+
+.layout {
+        flex: 1;
+        display: grid;
+        grid-template-columns: minmax(260px, 340px) 1fr;
+        gap: 1.5rem;
+        padding: 0 2rem 2rem;
+}
+
+@media (max-width: 900px) {
+        .layout {
+                grid-template-columns: 1fr;
+        }
+}
+
+.dropzone {
+        border: 2px dashed rgba(255, 255, 255, 0.2);
+        border-radius: 1rem;
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background: rgba(255, 255, 255, 0.02);
+        text-align: center;
+        min-height: 320px;
+}
+
+.dropzone__placeholder p {
+        margin: 0;
+        font-size: 1.1rem;
+}
+
+.dropzone__placeholder .hint {
+        color: #9c9c9c;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+}
+
+.upload-btn input {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+}
+
+.upload-btn label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #4d7cff, #7f4dff);
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.upload-btn label:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 24px rgba(77, 124, 255, 0.25);
+}
+
+.upload-btn svg {
+        fill: currentColor;
+}
+
+.viewer-list {
+        min-height: 320px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+        align-content: start;
+        padding-bottom: 2rem;
+}
+
+.viewer-list__empty {
+        grid-column: 1 / -1;
+        text-align: center;
+        color: #8a8a8a;
+        font-size: 1rem;
+        margin: 0;
+        padding: 2rem 0;
+}
+
+.viewer-panel {
+        background: rgba(0, 0, 0, 0.35);
+        border-radius: 1rem;
+        box-shadow: 0 24px 40px rgba(0, 0, 0, 0.45);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        min-height: 360px;
+}
+
+.viewer-panel__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(6px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.viewer-panel__title {
+        margin: 0;
+        font-size: 0.95rem;
+        font-weight: 600;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 80%;
+}
+
+.viewer-panel__actions {
+        display: flex;
+        gap: 0.25rem;
+}
+
+.viewer-panel__button {
+        appearance: none;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0.35rem 0.6rem;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.viewer-panel__button:hover {
+        background: rgba(255, 255, 255, 0.18);
+        transform: translateY(-1px);
+}
+
+.viewer-panel__canvas {
+        position: relative;
+        flex: 1;
+        min-height: 280px;
+}
+
+.viewer-panel__canvas .viewer {
+        position: absolute;
+        inset: 0;
+}
+
+.spinner {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(2px);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+}
+
+.spinner::after {
+        content: '';
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        border-top-color: #fff;
+        animation: spinner 1s linear infinite;
+}
+
+.spinner.visible {
+        pointer-events: auto;
+        opacity: 1;
+}
+
+.hidden {
+        display: none !important;
+}
+
+@keyframes spinner {
+        to {
+                transform: rotate(360deg);
+        }
+}
+
+.sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+}
